@@ -1,0 +1,20 @@
+{
+  "name": "maps-webgl-codelab-solution-project",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "webpack serve --progress --hot --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Muramoto",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "@googlemaps/js-api-loader": "^1.11.3",
+    "three": "^0.117.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.35.1",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

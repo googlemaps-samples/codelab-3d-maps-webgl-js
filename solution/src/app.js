@@ -19,7 +19,7 @@ import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 const apiOptions = {
   "apiKey": 'YOUR_API_KEY',
   "version": "beta",
-  "map_ids": "15431d2b469f209e"
+  "map_ids": "YOUR_MAP_ID"
 };
 
 const mapOptions = {
@@ -27,20 +27,20 @@ const mapOptions = {
   "heading": 0,
   "zoom": 18,
   "center": { lat: 35.6594945, lng: 139.6999859 },
-  "mapId": "15431d2b469f209e"    
+  "mapId": "YOUR_MAP_ID"    
 }
 
 async function initMap() {    
   const mapDiv = document.getElementById("map");
   const apiLoader = new Loader(apiOptions);
-  await apiLoader.load()      
+  await apiLoader.load();
   return new google.maps.Map(mapDiv, mapOptions);
 }
 
 
-async function initWebglOverlayView (map) {  
-  let scene, renderer, camera, loader;
-  const webglOverlayView = new google.maps.WebglOverlayView();
+async function initWebglOverlayView () {  
+  let scene, renderer, camera, loader, webglOverlayView;
+  webglOverlayView = new google.maps.WebglOverlayView();
   
   webglOverlayView.onAdd = () => {   
     // set up the scene
@@ -120,11 +120,12 @@ async function initWebglOverlayView (map) {
     // always reset the GL state
     renderer.state.reset();
   }
-  webglOverlayView.setMap(map);
+  
   return webglOverlayView;
 }
 
 (async () => {        
   const map = await initMap();
   const webglOverlayView = await initWebglOverlayView(map);  
+  webglOverlayView.setMap(map);
 })();

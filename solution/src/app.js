@@ -51,10 +51,7 @@ function initWebglOverlayView() {
     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.25);
     directionalLight.position.set(0.5, -1, 0.5);
     scene.add(directionalLight);
-    
-    const helper = new THREE.DirectionalLightHelper( directionalLight, 50, 0x000000 );    
-    scene.add( helper );
-
+  
     // load the model    
     loader = new GLTFLoader();               
     loader.load(

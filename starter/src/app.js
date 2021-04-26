@@ -33,7 +33,7 @@ async function initMap() {
   return new google.maps.Map(mapDiv, mapOptions);
 }
 
-async function initWebglOverlayView (map) {
+function initWebglOverlayView (map) {
   let scene, renderer, camera, loader, webglOverlayView;
   // WebGLOverlayView code goes here
   return webglOverlayView;

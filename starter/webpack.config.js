@@ -16,7 +16,6 @@
  
 const path = require('path');
 const webpack = require('webpack');
-console.log(__dirname)
 const CONFIG = {
   mode: 'development',
 

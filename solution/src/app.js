@@ -38,7 +38,7 @@ async function initMap() {
 }
 
 
-async function initWebglOverlayView () {  
+function initWebglOverlayView() {  
   let scene, renderer, camera, loader, webglOverlayView;
   webglOverlayView = new google.maps.WebglOverlayView();
   
@@ -90,21 +90,21 @@ async function initWebglOverlayView () {
     loader.manager.onLoad = () => {        
       renderer.setAnimationLoop(() => {
         webglOverlayView.requestRedraw();
-          map.moveCamera({
-            "tilt": mapOptions.tilt,
-            "heading": mapOptions.heading,
-            "zoom": mapOptions.zoom
-          });            
-          
-          // rotate the map 360 degrees 
-          if (mapOptions.tilt < 67.5) {
-            mapOptions.tilt += 0.5
-          } else if (mapOptions.heading <= 360) {
-            mapOptions.heading += 0.2;              
-            mapOptions.zoom -= 0.0005;
-          } else {
-            renderer.setAnimationLoop(null)
-          }
+        map.moveCamera({
+          "tilt": mapOptions.tilt,
+          "heading": mapOptions.heading,
+          "zoom": mapOptions.zoom
+        });            
+        
+        // rotate the map 360 degrees 
+        if (mapOptions.tilt < 67.5) {
+          mapOptions.tilt += 0.5
+        } else if (mapOptions.heading <= 360) {
+          mapOptions.heading += 0.2;              
+          mapOptions.zoom -= 0.0005;
+        } else {
+          renderer.setAnimationLoop(null)
+        }
       });        
     }
   }

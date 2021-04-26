@@ -126,6 +126,6 @@ function initWebglOverlayView() {
 
 (async () => {        
   const map = await initMap();
-  const webglOverlayView = await initWebglOverlayView(map);  
+  const webglOverlayView = initWebglOverlayView(map);  
   webglOverlayView.setMap(map);
 })();

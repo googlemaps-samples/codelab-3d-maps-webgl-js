@@ -34,9 +34,8 @@ async function initMap() {
 }
 
 function initWebglOverlayView (map) {
-  let scene, renderer, camera, loader, webglOverlayView;
+  let scene, renderer, camera, loader;
   // WebGLOverlayView code goes here
-  return webglOverlayView;
 }
 
 (async () => {        

@@ -17,9 +17,9 @@ import * as THREE from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 const apiOptions = {
-  "apiKey": 'YOUR_API_KEY',
-  "version": "beta",
-  "map_ids": "YOUR_MAP_ID"
+  apiKey: “YOUR API KEY”,
+  version: "beta",
+  map_ids: ["YOUR MAP ID"]
 };
 
 const mapOptions = {
@@ -27,9 +27,8 @@ const mapOptions = {
   "heading": 0,
   "zoom": 18,
   "center": { lat: 35.6594945, lng: 139.6999859 },
-  "mapId": "YOUR_MAP_ID"    
+  "mapId": "YOUR MAP ID"    
 }
-
 
 async function initMap() {    
   const mapDiv = document.getElementById("map");
@@ -119,5 +118,5 @@ function initWebglOverlayView(map) {
 
 (async () => {        
   const map = await initMap();
-  const webglOverlayView = initWebglOverlayView(map);    
+  initWebglOverlayView(map);    
 })();

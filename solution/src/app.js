@@ -17,7 +17,7 @@ import * as THREE from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 const apiOptions = {
-  apiKey: “YOUR API KEY”,
+  apiKey: "YOUR API KEY",
   version: "beta",
   map_ids: ["YOUR MAP ID"]
 };
@@ -27,7 +27,7 @@ const mapOptions = {
   "heading": 0,
   "zoom": 18,
   "center": { lat: 35.6594945, lng: 139.6999859 },
-  "mapId": "YOUR MAP ID"    
+  "mapId": "YOUR MAP ID"
 }
 
 async function initMap() {    
@@ -63,9 +63,6 @@ function initWebglOverlayView(map) {
         scene.add(gltf.scene);           
       }
     );
-
-    const matrix = transformer.fromLatLngAltitude(mapOptions.center, 120);
-    camera.projectionMatrix = new THREE.Matrix4().fromArray(matrix);
   }
   
   webglOverlayView.onContextRestored = (gl) => {        
@@ -78,8 +75,7 @@ function initWebglOverlayView(map) {
     });
     renderer.autoClear = false;
 
-    // wait to move the camera until the 3D model loads
-    
+    // wait to move the camera until the 3D model loads    
     loader.manager.onLoad = () => {        
       renderer.setAnimationLoop(() => {
         webglOverlayView.requestRedraw();
@@ -104,7 +100,8 @@ function initWebglOverlayView(map) {
 
   webglOverlayView.onDraw = (gl, transformer) => {
     // update camera matrix to ensure the model is georeferenced correctly on the map     
-    
+    const matrix = transformer.fromLatLngAltitude(mapOptions.center, 120);
+    camera.projectionMatrix = new THREE.Matrix4().fromArray(matrix);
     
     webglOverlayView.requestRedraw();      
     renderer.render(scene, camera);                  

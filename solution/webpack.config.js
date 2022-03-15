@@ -23,14 +23,10 @@ const CONFIG = {
     app: './src/app.js'
   },
   devServer: {
-    contentBase: path.join(__dirname, 'src'),
-    index: 'index.html'
-  },
-
-  plugins: [
-    // Read google maps token from environment variable
-    new webpack.EnvironmentPlugin(['GoogleMapsAPIKey'])
-  ]
+    static: {
+      directory: path.join(__dirname, 'src'),
+    }
+  }
 };
 
 // This line enables bundling against src in this repo rather than installed module

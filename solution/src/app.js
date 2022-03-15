@@ -18,8 +18,7 @@ import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 const apiOptions = {
   apiKey: 'YOUR API KEY',
-  version: "beta",
-  map_ids: ["YOUR MAP ID"]
+  version: "beta"
 };
 
 const mapOptions = {
@@ -38,11 +37,11 @@ async function initMap() {
 }
 
 
-function initWebglOverlayView(map) {  
+function initWebGLOverlayView(map) {  
   let scene, renderer, camera, loader;
-  const webglOverlayView = new google.maps.WebglOverlayView();
+  const webGLOverlayView = new google.maps.WebGLOverlayView();
   
-  webglOverlayView.onAdd = () => {   
+  webGLOverlayView.onAdd = () => {   
     // set up the scene
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera();
@@ -65,7 +64,7 @@ function initWebglOverlayView(map) {
     );
   }
   
-  webglOverlayView.onContextRestored = (gl) => {        
+  webGLOverlayView.onContextRestored = ({gl}) => {    
     // create the three.js renderer, using the
     // maps's WebGL rendering context.
     renderer = new THREE.WebGLRenderer({
@@ -96,21 +95,27 @@ function initWebglOverlayView(map) {
     }
   }
 
-  webglOverlayView.onDraw = (gl, coordinateTransformer) => {
-    // update camera matrix to ensure the model is georeferenced correctly on the map     
-    const matrix = coordinateTransformer.fromLatLngAltitude(mapOptions.center, 120);
+  webGLOverlayView.onDraw = ({gl, transformer}) => {
+    // update camera matrix to ensure the model is georeferenced correctly on the map
+    const latLngAltitudeLiteral = {
+        lat: mapOptions.center.lat,
+        lng: mapOptions.center.lng,
+        altitude: 120
+    }
+
+    const matrix = transformer.fromLatLngAltitude(latLngAltitudeLiteral);
     camera.projectionMatrix = new THREE.Matrix4().fromArray(matrix);
     
-    webglOverlayView.requestRedraw();      
+    webGLOverlayView.requestRedraw();      
     renderer.render(scene, camera);                  
 
     // always reset the GL state
     renderer.resetState();
   }
-  webglOverlayView.setMap(map);
+  webGLOverlayView.setMap(map);
 }
 
 (async () => {        
   const map = await initMap();
-  initWebglOverlayView(map);    
+  initWebGLOverlayView(map);    
 })();

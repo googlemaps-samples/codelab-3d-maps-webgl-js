@@ -16,8 +16,7 @@ import { Loader } from '@googlemaps/js-api-loader';
 
 const apiOptions = {
   "apiKey": "YOUR_API_KEY",
-  "version": "beta",
-  "map_ids": "YOUR_MAP_ID"
+  "version": "beta"
 };
 
 const mapOptions = {

@@ -9,12 +9,12 @@
   "author": "Alex Muramoto",
   "license": "Apache 2.0",
   "dependencies": {
-    "@googlemaps/js-api-loader": "^1.11.3",
-    "three": "^0.128.0"
+    "@googlemaps/js-api-loader": "^1.13.9",
+    "three": "^0.138.3"
   },
   "devDependencies": {
-    "webpack": "^5.35.1",
-    "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
   }
 }

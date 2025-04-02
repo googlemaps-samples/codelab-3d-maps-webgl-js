@@ -8,7 +8,9 @@ To get started with the codelab, download or fork this repo. A starter template 
 To run the starter or solution apps, run the following from their respective directories:
 
 1. `npm i`
-2. `npm start`
+2. `npm audit`
+3. `npm audit fix`
+4. `npm start`
 
 This will install the needed dependencies and run the app locally in your browser using Webpack Dev Server.
 
